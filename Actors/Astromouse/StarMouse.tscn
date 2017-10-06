@@ -40,7 +40,7 @@ collision/margin = 0.08
 script/script = ExtResource( 1 )
 max_speed = 800.0
 max_force = 0.07
-slowing_radius = 200.0
+arriving_radius = 100
 
 [node name="Sprite" type="Sprite" parent="."]
 
@@ -106,7 +106,7 @@ _update_shape_index = 0
 process_mode = 1
 wait_time = 5.0
 one_shot = true
-autostart = true
+autostart = false
 
 [node name="Sax" type="StreamPlayer" parent="."]
 

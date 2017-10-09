@@ -20,7 +20,7 @@ script/script = ExtResource( 2 )
 
 transform/scale = Vector2( 0.412247, 0.412247 )
 frames = ExtResource( 3 )
-frame = 1
+frame = 2
 playing = true
 offset = Vector2( 161.029, 0 )
 

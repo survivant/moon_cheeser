@@ -63,8 +63,8 @@ tracks/0/keys = {
 
 [node name="BlackHole" type="StaticBody2D" groups=[
 "enemy",
-"void",
 "black_hole",
+"void",
 ]]
 
 z/z = -3

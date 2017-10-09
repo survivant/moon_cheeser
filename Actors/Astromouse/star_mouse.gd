@@ -27,16 +27,10 @@ export (float) var arriving_radius = 100
 var velocity = Vector2()
 var already_pressed = false
 onready var target = get_viewport().get_mouse_pos()
-#onready var moon = get_tree().get_nodes_in_group("moon")[0]
+onready var moon = get_tree().get_nodes_in_group("moon")[0]
 func _ready():
-#	moon.show_gravity()
-	acheesements.modify_achievement("starmouse", 1)
-	if acheesements.dict["starmouse"].accomplished >= acheesements.dict["starmouse"].total:
-		get_node("Sax").play(bgm.get_pos())
-		get_tree().get_nodes_in_group("crux")[0].get_node("Animator").play("fade")
-	if acheesements.dict["mooncheeser"].accomplished >= acheesements.dict["mooncheeser"].total:
-		get_node("Sprite").set_texture(load("res://Actors/Astromouse/true_starmouse.png"))
-		get_node("Sprite/Mask").set_pos(Vector2(0,5))
+	get_node("Sax").play(bgm.get_pos())
+	moon.show_gravity()
 	set_fixed_process(true)
 	
 func _fixed_process(delta):
@@ -70,12 +64,10 @@ func _on_body_enter( body ):
 
 
 func _on_animator_finished():
-	if acheesements.dict["starmouse"].accomplished >= acheesements.dict["starmouse"].total:
-		get_tree().get_nodes_in_group("crux")[0].get_node("Animator").play_backwards("fade")
-#	if get_parent().get_game_state() == 0:
-#		moon.hide_gravity()
-#	else:
-#		moon.get_node("Tween").set_active(false)
+	if get_parent().get_game_state() == 0:
+		moon.hide_gravity()
+	else:
+		moon.get_node("Tween").set_active(false)
 	var i = load("res://Actors/Astromouse/Astromouse.tscn").instance()
 	i.set_pos(get_pos())
 	get_parent().add_child(i)

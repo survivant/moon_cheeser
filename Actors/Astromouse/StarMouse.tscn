@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://Actors/Astromouse/star_mouse.gd" type="Script" id=1]
-[ext_resource path="res://Actors/Astromouse/starmouse.png" type="Texture" id=2]
+[ext_resource path="res://Actors/Astromouse/true_starmouse.png" type="Texture" id=2]
 [ext_resource path="res://Actors/Astromouse/mask.png" type="Texture" id=3]
 [ext_resource path="res://take_five_sax.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Actors/Astromouse/SFX.tscn" type="PackedScene" id=5]
@@ -50,6 +50,7 @@ texture = ExtResource( 2 )
 [node name="Mask" type="Light2D" parent="Sprite"]
 
 visibility/visible = false
+transform/pos = Vector2( 0, 5 )
 enabled = true
 editor_only = false
 texture = ExtResource( 3 )
@@ -106,7 +107,7 @@ _update_shape_index = 0
 process_mode = 1
 wait_time = 5.0
 one_shot = true
-autostart = false
+autostart = true
 
 [node name="Sax" type="StreamPlayer" parent="."]
 

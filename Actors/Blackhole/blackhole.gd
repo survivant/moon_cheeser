@@ -27,8 +27,6 @@ export (float) var pulse_interval = 2.0
 onready var moon = get_parent().find_node("Moon")
 var can_pulse = true
 func _ready():
-	if acheesements.dict["void"].accomplished >= acheesements.dict["void"].total:
-		get_node("Drum").play(bgm.get_pos())
 	if get_parent().has_method("set_game_state"):
 		get_parent().set_game_state(1)
 	if moon != null:
@@ -70,7 +68,6 @@ func _on_life_spam():
 	tween.start()
 	get_node("GUILayer/Warning/Animator").stop()
 	get_node("GUILayer/Warning").hide()
-	acheesements.modify_achievement("gravity", 1)
 	_move_away(self, moon)
 	var t = Timer.new()
 	add_child(t)

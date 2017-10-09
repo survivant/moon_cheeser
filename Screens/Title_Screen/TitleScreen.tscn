@@ -1,13 +1,11 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://Screens/Abstract Screen.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Screens/Title_Screen/title_screen.gd" type="Script" id=2]
 [ext_resource path="res://Levels/Background.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Screens/ShaderButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Screens/Title_Screen/achievement_button.png" type="Texture" id=5]
-[ext_resource path="res://Screens/Title_Screen/tittle.png" type="Texture" id=6]
-[ext_resource path="res://Screens/Title_Screen/moon.png" type="Texture" id=7]
-[ext_resource path="res://Screens/Title_Screen/play_button.png" type="Texture" id=8]
+[ext_resource path="res://Screens/Title_Screen/tittle.png" type="Texture" id=5]
+[ext_resource path="res://Screens/Title_Screen/play_button.png" type="Texture" id=6]
 
 [sub_resource type="GDScript" id=1]
 
@@ -19,6 +17,33 @@ func _ready():
 func _process(delta):
 #	set_size(OS.get_window_size())
 	pass"
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "play_button"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 344 ), Vector2( 61, 360 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect/size")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 0.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1230, 326 ), Vector2( 1108, 294 ) ]
+}
 
 [node name="TitleScreen" instance=ExtResource( 1 )]
 
@@ -75,139 +100,49 @@ margin/right = 1255.0
 margin/bottom = 695.0
 alignment = 0
 
-[node name="LeftPortion" type="VBoxContainer" parent="ScreenMargin/ScreenPortions"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 3
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 407.0
-margin/bottom = 670.0
-custom_constants/separation = 64
-alignment = 0
-
-[node name="TopConstraint" type="Control" parent="ScreenMargin/ScreenPortions/LeftPortion"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 3
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 407.0
-margin/bottom = 180.0
-
-[node name="Achievements" parent="ScreenMargin/ScreenPortions/LeftPortion" instance=ExtResource( 4 )]
-
-margin/top = 244.0
-margin/right = 407.0
-margin/bottom = 424.0
-textures/normal = ExtResource( 5 )
-
-[node name="BotConstraint" type="Control" parent="ScreenMargin/ScreenPortions/LeftPortion"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 3
-margin/left = 0.0
-margin/top = 488.0
-margin/right = 407.0
-margin/bottom = 670.0
-
 [node name="CenterPortion" type="VBoxContainer" parent="ScreenMargin/ScreenPortions"]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-margin/left = 411.0
+margin/left = 0.0
 margin/top = 0.0
-margin/right = 818.0
+margin/right = 1230.0
 margin/bottom = 670.0
 custom_constants/separation = 19
 alignment = 0
 
 [node name="Credits" parent="ScreenMargin/ScreenPortions/CenterPortion" instance=ExtResource( 4 )]
 
-margin/right = 407.0
+margin/right = 1230.0
 margin/bottom = 325.0
-textures/normal = ExtResource( 6 )
+textures/normal = ExtResource( 5 )
 hover = Color( 1.1, 1.1, 1.1, 1 )
 
-[node name="Moon" type="TextureButton" parent="ScreenMargin/ScreenPortions/CenterPortion"]
+[node name="ShaderButton" parent="ScreenMargin/ScreenPortions/CenterPortion" instance=ExtResource( 4 )]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 3
-margin/left = 0.0
 margin/top = 344.0
-margin/right = 407.0
-margin/bottom = 670.0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-textures/normal = ExtResource( 7 )
-params/resize_mode = 1
-params/stretch_mode = 6
-
-[node name="RightPortion" type="VBoxContainer" parent="ScreenMargin/ScreenPortions"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 2
-margin/left = 822.0
-margin/top = 0.0
 margin/right = 1230.0
 margin/bottom = 670.0
-custom_constants/separation = 64
-alignment = 0
+textures/normal = ExtResource( 6 )
 
-[node name="TopConstraint" type="Control" parent="ScreenMargin/ScreenPortions/RightPortion"]
+[node name="Animator" type="AnimationPlayer" parent="ScreenMargin/ScreenPortions/CenterPortion/ShaderButton"]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 3
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 408.0
-margin/bottom = 180.0
-
-[node name="Play" parent="ScreenMargin/ScreenPortions/RightPortion" instance=ExtResource( 4 )]
-
-margin/top = 244.0
-margin/right = 408.0
-margin/bottom = 424.0
-textures/normal = ExtResource( 8 )
-
-[node name="BotConstraint" type="Control" parent="ScreenMargin/ScreenPortions/RightPortion"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 3
-margin/left = 0.0
-margin/top = 488.0
-margin/right = 408.0
-margin/bottom = 670.0
-
-[connection signal="pressed" from="ScreenMargin/ScreenPortions/LeftPortion/Achievements" to="." method="_on_Achievements_pressed"]
-
-[connection signal="released" from="ScreenMargin/ScreenPortions/LeftPortion/Achievements" to="." method="change_to_next_scene" binds= [ "res://Screens/Achievements_Screen/AchievementsScreen.tscn" ]]
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/play_button = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "play_button"
 
 [connection signal="pressed" from="ScreenMargin/ScreenPortions/CenterPortion/Credits" to="." method="_on_Credits_pressed"]
 
 [connection signal="released" from="ScreenMargin/ScreenPortions/CenterPortion/Credits" to="." method="change_to_next_scene" binds= [ "res://Screens/Credits_Screen/CreditsScreen.tscn" ]]
 
-[connection signal="pressed" from="ScreenMargin/ScreenPortions/RightPortion/Play" to="." method="_on_Play_pressed"]
-
-[connection signal="released" from="ScreenMargin/ScreenPortions/RightPortion/Play" to="." method="change_to_next_scene" binds= [ "res://Screens/Play_Screen/PlayScreen.tscn" ]]
+[connection signal="released" from="ScreenMargin/ScreenPortions/CenterPortion/ShaderButton" to="." method="change_to_next_scene" binds= [ "res://Screens/Play_Screen/PlayScreen.tscn" ]]
 
 
 [editable path="ScreenMargin/Background"]

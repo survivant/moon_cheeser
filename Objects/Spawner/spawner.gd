@@ -28,7 +28,7 @@ export (float) var max_spawn_time = 2.0
 func _ready():
 	randomize()
 	get_node("Timer").set_wait_time(floor(rand_range(min_spawn_time, max_spawn_time)))
-	if acheesements.already_played == true:
+	if score_handler.already_played == true:
 		get_node("Timer").set_autostart(false)
 		get_node("Timer").start()
 func _spawn():

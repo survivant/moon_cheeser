@@ -2,7 +2,7 @@ extends Node
 
 var current_score = 0 setget set_score, get_score
 var high_score = 0
-
+var already_played = false
 signal scored
 func _ready():
 	var f = File.new()

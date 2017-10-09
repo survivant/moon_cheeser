@@ -33,7 +33,6 @@ func float_around(offset):
 	
 func increase_score():
 	score_handler.set_score(score)
-	acheesements.modify_achievement("mooncheeser", 1)
 	queue_free()
 	
 func move_towards(where):

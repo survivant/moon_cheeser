@@ -23,8 +23,6 @@ extends Node
 
 export (int, "NORMAL", "GRAVITATIONAL_BATTLE") var game_state setget set_game_state, get_game_state
 
-func _ready():
-	connect("exit_tree", acheesements, "write_achievements")
 	
 func set_game_state(state):
 	if is_inside_tree():

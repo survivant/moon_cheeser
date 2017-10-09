@@ -30,14 +30,11 @@ var jump_normal = Vector2(0, -1)
 onready var default_gravity_scale = get_gravity_scale()
 
 func _ready():
-	if acheesements.dict["mooncheeser"].accomplished >= acheesements.dict["mooncheeser"].total:
-		get_node("Sprite").set_texture(load("res://Actors/Astromouse/true_astro_spritesheet.png"))
+	get_node("Sprite").set_texture(load("res://Actors/Astromouse/true_astro_spritesheet.png"))
 	set_fixed_process(true)
 	connect("died", get_parent().get_parent(), "change_to_next_scene", ["res://Screens/Score_Screen/ScoreScreen.tscn"])
 		
 func _fixed_process(delta):
-	if not get_node("SFX").is_active():
-		emit_signal("finished_sfx")
 	is_falling()
 func jump():
 	if can_jump:
@@ -56,15 +53,12 @@ func _body_enter( body ):
 		
 	elif body.is_in_group("enemy"):
 		if body.is_in_group("void"):
-			acheesements.modify_achievement("void", 1)
 			get_node("SFX").play("falling")
 			get_node("Animator").play("death")
-			yield(self, "finished_sfx")
 			emit_signal("died")
 		elif not invulnerable:
 			get_node("Sprite").hide()
 			get_node("SFX").play("damage")
-			yield(self, "finished_sfx")
 			emit_signal("died")
 		
 	elif body.is_in_group("cheese"):
